@@ -1,0 +1,15 @@
+name = GSB Feature Featured Content FPP
+core = 7.x
+package = GSB
+version = 7.x-1.0-beta1
+project = gsb_feature_featured_content_fpp
+dependencies[] = ctools
+dependencies[] = features
+dependencies[] = field_collection
+dependencies[] = fieldable_panels_panes
+features[ctools][] = fieldable_panels_panes:fieldable_panels_pane_type:1
+features[features_api][] = api:2
+features[field_instance][] = fieldable_panels_pane-featured_content-field_featured_item
+features[fieldable_panels_pane_type][] = featured_content
+features_exclude[field_base][field_featured_item] = field_featured_item
+mtime = 1419346149

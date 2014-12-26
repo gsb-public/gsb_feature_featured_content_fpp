@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the GSB Feature Featured Content FPP feature.
+ */
+
+include_once 'gsb_feature_featured_content_fpp.features.inc';

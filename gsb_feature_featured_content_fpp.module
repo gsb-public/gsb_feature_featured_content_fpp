@@ -20,7 +20,7 @@ function gsb_feature_featured_content_fpp_form_alter(&$form, &$form_state, $form
 
 
 function gsb_feature_featured_content_fpp_after_build($form, &$form_state) {
-  foreach ($form[LANGUAGE_NONE] as $key) {
+  foreach ($form[LANGUAGE_NONE] as $key => $value) {
     if (is_numeric($key) && $key >= 0) {
       unset($form[LANGUAGE_NONE][$key]['field_feature_type'][LANGUAGE_NONE]['#options']['_none']);
       unset($form[LANGUAGE_NONE][$key]['field_feature_type'][LANGUAGE_NONE]['_none']);

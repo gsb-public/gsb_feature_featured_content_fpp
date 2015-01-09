@@ -10,37 +10,59 @@ include_once 'gsb_feature_featured_content_fpp.features.inc';
  * Implements hook_form_alter().
  */
 function gsb_feature_featured_content_fpp_form_alter(&$form, &$form_state, $form_id) {
-  if ($form_id == 'fieldable_panels_panes_entity_edit_form' && $form_state['entity']->bundle == 'featured_content') {
+  if (($form_id == 'fieldable_panels_panes_fieldable_panels_pane_content_type_edit_form' || $form_id == 'fieldable_panels_panes_entity_edit_form') 
+     && $form_state['entity']->bundle == 'featured_content') {
     $form['field_featured_item']['#after_build'] = array('gsb_feature_featured_content_fpp_after_build');
 
     // Add override values callback absolutely first.
    array_unshift($form['#submit'], 'gsb_feature_featured_content_fpp_nid_other_fpp_submit');
+   drupal_add_js(drupal_get_path('module', 'gsb_feature_featured_content_fpp') . '/js/gsb_feature_featured_content_fpp.js');
   }
 }
 
 
+/**
+ * gsb_feature_featured_content_fpp_after_build().
+ */
 function gsb_feature_featured_content_fpp_after_build($form, &$form_state) {
   foreach ($form[LANGUAGE_NONE] as $key => $value) {
     if (is_numeric($key) && $key >= 0) {
+
+      // Remove N/A option from feature type and media format radio button
       unset($form[LANGUAGE_NONE][$key]['field_feature_type'][LANGUAGE_NONE]['#options']['_none']);
       unset($form[LANGUAGE_NONE][$key]['field_feature_type'][LANGUAGE_NONE]['_none']);
-      $form[LANGUAGE_NONE][$key]['field_existing_node_fpp_ref']['#states'] = array(
+
+      unset($form[LANGUAGE_NONE][$key]['field_icon'][LANGUAGE_NONE]['#options']['_none']);
+      unset($form[LANGUAGE_NONE][$key]['field_icon'][LANGUAGE_NONE]['_none']);
+      $form[LANGUAGE_NONE][$key]['field_featured_content_fpp_ref']['#states'] = array(
         'visible' => array(
           ':input[name="field_featured_item[und]['.$key.'][field_feature_type][und]"]' => array('value' => 'nid'),
         ),
       );
 
       // Change #id to apply #states.
-      $form[LANGUAGE_NONE][$key]['field_link_single']['#id'] = 'views-exposed-pane-other'.$key;
+      $form[LANGUAGE_NONE][$key]['field_link_single']['#id'] = 'views-exposed-pane-other-link'.$key;
       $form[LANGUAGE_NONE][$key]['field_link_single']['#states'] = array(
+        'visible' => array(
+          ':input[name="field_featured_item[und]['.$key.'][field_feature_type][und]"]' => array('value' => 'other'),
+        ),
+      );
+
+      $form[LANGUAGE_NONE][$key]['field_icon']['#id'] = 'views-exposed-pane-other-icon'.$key;
+      $form[LANGUAGE_NONE][$key]['field_icon']['#states'] = array(
+        'visible' => array(
+          ':input[name="field_featured_item[und]['.$key.'][field_feature_type][und]"]' => array('value' => 'other'),
+        ),
+      );
+
+      $form[LANGUAGE_NONE][$key]['field_title']['#id'] = 'views-exposed-pane-other-title'.$key;
+      $form[LANGUAGE_NONE][$key]['field_title']['#states'] = array(
         'visible' => array(
           ':input[name="field_featured_item[und]['.$key.'][field_feature_type][und]"]' => array('value' => 'other'),
         ),
       );
     }
   }
-
-  //drupal_add_js(drupal_get_path('module', 'gsb_feature_featured_content_fpp') . '/js/gsb_feature_featured_content_fpp.js');
   return $form;
 }
 

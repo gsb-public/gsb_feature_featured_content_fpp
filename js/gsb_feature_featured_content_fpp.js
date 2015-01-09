@@ -1,17 +1,17 @@
 (function ($) {
   Drupal.behaviors.gsb_feature_featured_content_fpp = {
     attach: function (context, settings) {
-      console.log($("input[name$='field-feature-type-und-none']"));
-      $("input[id$='field-feature-type-und-none']", context).hide();
-      $("label[for$='field-feature-type-und-none']").hide();
-     /*  $(':input[name="field_featured_item[und][1][field_feature_type][und]"]').change(function () {
+      $('input[name$="[field_feature_type][und]"]').change(function () {
+        var key = this.id.match(/\d+/);
         if ($(this).val() == 'nid') {
-          $('#edit-field-featured-item-und-1-field-existing-node-fpp-ref-und-0-target-id--2').val('');
+          $('#edit-field-featured-item-und-'+key+'-field-title-und-0-value').val('');
+          $('#edit-field-featured-item-und-'+key+'-field-link-single-und-0-url').val('');
+          $('input[name="field_featured_item[und]['+key+'][field_icon][und]"]').removeAttr('checked');
         }
         else {
-          $('#edit-field-featured-item-und-1-field-existing-node-fpp-ref-und-0-target-id--2').val('');
+          $('#edit-field-featured-item-und-'+key+'-field-featured-content-fpp-ref-und-0-target-id').val('');
         }
-      }); */
+      });
     }
   }
 })(jQuery);

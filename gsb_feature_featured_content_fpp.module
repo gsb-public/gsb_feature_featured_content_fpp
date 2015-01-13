@@ -12,10 +12,9 @@ include_once 'gsb_feature_featured_content_fpp.features.inc';
 function gsb_feature_featured_content_fpp_form_alter(&$form, &$form_state, $form_id) {
   if (($form_id == 'fieldable_panels_panes_fieldable_panels_pane_content_type_edit_form' || $form_id == 'fieldable_panels_panes_entity_edit_form') 
      && $form_state['entity']->bundle == 'featured_content') {
+    $form['title']['#access'] = FALSE;
     $form['field_featured_item']['#after_build'] = array('gsb_feature_featured_content_fpp_after_build');
 
-    // Add override values callback absolutely first.
-   array_unshift($form['#submit'], 'gsb_feature_featured_content_fpp_nid_other_fpp_submit');
    drupal_add_js(drupal_get_path('module', 'gsb_feature_featured_content_fpp') . '/js/gsb_feature_featured_content_fpp.js');
   }
 }
@@ -67,10 +66,83 @@ function gsb_feature_featured_content_fpp_after_build($form, &$form_state) {
 }
 
 /**
- * Form callback.
- *
- * Keep only 1 contextual filter at a time, unset the other.
+ * Implements hook_field_collection_item_view().
  */
-function gsb_feature_featured_content_fpp_nid_other_fpp_submit($form, &$form_state) {
+function gsb_feature_featured_content_fpp_field_collection_item_view($field_collection_item, $view_mode, $langcode) {
+  if ($field_collection_item->field_feature_type[LANGUAGE_NONE][0]['value'] == 'other') {
+    $field_collection_item->content['field_title'][0]['#markup'] = '<a href='.$field_collection_item->field_link_single[LANGUAGE_NONE][0]['url'].'>'.$field_collection_item->content['field_title'][0]['#markup'].'</a>';
+  }
+}
 
+/**
+ * Implements hook_fieldable_panels_pane_view().
+ */
+function gsb_feature_featured_content_fpp_fieldable_panels_pane_view($entity, $view) {
+ /*  $wrapper = entity_metadata_wrapper('fieldable_panels_pane', $entity);
+  if ($wrapper->getBundle() != 'featured_content') {
+    return;
+  }
+  dsm($entity);
+  $featured_item = array();
+  // Loop through each featured item field collection.
+  foreach ($wrapper->field_featured_item as $item_id => $item_desc) {
+    // Build a row wrapper for each featured item.
+    $featured_item_display = array(
+      '#type' => 'container',
+      '#attributes' => array(
+        'class' => array(
+          'featured-item-row show-more-less show-more-less-num-3 show-more-less-min-5',
+        ),
+      ),
+    );
+
+    $featured_item_display['wrapper']['featured_item_wrapper_title']['title']['#prefix'] = '<div class="fefe">';
+    $featured_item_display['wrapper']['featured_item_wrapper_title']['title']['#suffix'] = '</div>';
+    $featured_item_display['wrapper']['featured_item_wrapper_title']['title']['#markup'] = $item_desc->field_feature_type->value();
+
+    $featured_item[$item_id] = $featured_item_display;
+  }
+
+  $entity->content['gsb_feature_people_fpp'] = array(
+    'title' => array(
+      '#type' => 'container',
+      '#attributes' => array(
+        'class' => array(
+          'field-name-field-title',
+        ),
+      ),
+      '#children' => $wrapper->field_title->value(),
+    ),
+  ) + $featured_item; */
+}
+
+/**
+ * Implements template_preprocess_fieldable_panels_pane().
+ */
+function  gsb_feature_featured_content_fpp_preprocess_fieldable_panels_pane(&$variables) {
+   if ($variables['elements']['#bundle'] == 'featured_content') {
+ // dsm($variables);
+    $wrapper = entity_metadata_wrapper('fieldable_panels_pane', $variables['elements']['#element']);
+    $field_collection_item = $wrapper->field_featured_item;
+    foreach ($field_collection_item as $key => $value) {
+      if ($field_collection_item[$key]->field_feature_type->value() == 'nid') {
+       // dsm($field_collection_item[$key]->field_featured_content_fpp_ref->value()->nid);
+        $node = node_load($field_collection_item[$key]->field_featured_content_fpp_ref->value()->nid);
+       // dsm($node->field_event_date[LANGUAGE_NONE][0]['value']);
+       // dsm($node->field_event_date[LANGUAGE_NONE][0]['value2']);
+       /*  $output['start_date'][$key] = array(
+          '#type' => 'container',
+          '#attributes' => array(
+            'class' => array(
+              'show-more-less show-more-less-num-3 show-more-less-min-5',
+            ),
+          ),
+          '#children' => $node->field_event_date[LANGUAGE_NONE][0]['value'],
+        ); */
+      }
+    }
+    // Set fpp class depending on style field.
+    $variables['classes_array'][] = 'show-more-less show-more-less-num-3 show-more-less-min-5';
+  }
+  $variables['fields'] .= render($output);
 }

@@ -33,7 +33,7 @@ function gsb_feature_featured_content_fpp_field_default_field_instances() {
     'entity_type' => 'field_collection_item',
     'field_name' => 'field_editorial_summary',
     'label' => 'Description',
-    'required' => 0,
+    'required' => 1,
     'settings' => array(
       'better_formats' => array(
         'allowed_formats' => array(
@@ -382,7 +382,7 @@ function gsb_feature_featured_content_fpp_field_default_field_instances() {
     'entity_type' => 'field_collection_item',
     'field_name' => 'field_related_other_label',
     'label' => 'Label',
-    'required' => 0,
+    'required' => 1,
     'settings' => array(
       'better_formats' => array(
         'allowed_formats' => array(
@@ -544,14 +544,10 @@ function gsb_feature_featured_content_fpp_field_default_field_instances() {
         'label' => 'hidden',
         'module' => 'field_collection',
         'settings' => array(
-          'add' => 'Add',
           'conditions' => array(),
-          'delete' => 'Delete',
-          'description' => 1,
-          'edit' => 'Edit',
-          'view_mode' => 'people_fpp',
+          'view_mode' => 'full',
         ),
-        'type' => 'field_collection_view',
+        'type' => 'field_collection_fields',
         'weight' => 1,
       ),
     ),

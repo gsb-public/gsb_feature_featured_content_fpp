@@ -15,9 +15,33 @@ function gsb_feature_featured_content_fpp_form_alter(&$form, &$form_state, $form
     $form['title']['#access'] = FALSE;
     $form['field_featured_item']['#after_build'] = array('gsb_feature_featured_content_fpp_after_build');
 
-   drupal_add_js(drupal_get_path('module', 'gsb_feature_featured_content_fpp') . '/js/gsb_feature_featured_content_fpp.js');
+    drupal_add_js(drupal_get_path('module', 'gsb_feature_featured_content_fpp') . '/js/gsb_feature_featured_content_fpp.js');
+
+    // Perform additional validation.
+    $form['#validate'][] = 'gsb_feature_featured_content_fpp_form_validate';
   }
 }
+
+/**
+ * Validate callback for fpp.
+ *  - Conditionally validate media format field.
+ */
+function gsb_feature_featured_content_fpp_form_validate($form, &$form_state) {
+  $language = $form['language']['#value'];
+  $values = $form_state['values'];
+  foreach ($values['field_featured_item'][$language] as $key => $value) {
+    if (is_numeric($key) && $key >= 0) {
+      // If feature type is other is an media format is mandatory.
+      if ($values['field_featured_item'][$language][$key]['field_feature_type'][$language][0]['value'] == 'other') {
+        if (empty($values['field_featured_item'][$language][$key]['field_icon'][$language][0]['value'])) {
+          $field_label = $form['field_featured_item'][$language][$key]['field_icon'][$language]['#title'];
+          form_set_error('field_icon]['.$language.']['.$key.'][tid', $field_label . ' field is required.');
+        }
+      }
+    }
+  }
+}
+
 
 
 /**
@@ -26,6 +50,11 @@ function gsb_feature_featured_content_fpp_form_alter(&$form, &$form_state, $form
 function gsb_feature_featured_content_fpp_after_build($form, &$form_state) {
   foreach ($form[LANGUAGE_NONE] as $key => $value) {
     if (is_numeric($key) && $key >= 0) {
+
+      // Add required field markers. The actual field validation is done in validate callback.
+      if (!empty($form[LANGUAGE_NONE][$key]['field_icon'][LANGUAGE_NONE])) {
+        $form[LANGUAGE_NONE][$key]['field_icon'][LANGUAGE_NONE]['#title'] .= " " . theme('form_required_marker');
+      }
 
       // Remove N/A option from feature type and media format radio button
       unset($form[LANGUAGE_NONE][$key]['field_feature_type'][LANGUAGE_NONE]['#options']['_none']);
@@ -62,6 +91,7 @@ function gsb_feature_featured_content_fpp_after_build($form, &$form_state) {
       );
     }
   }
+
   return $form;
 }
 

@@ -64,3 +64,14 @@ function gsb_feature_featured_content_fpp_after_build($form, &$form_state) {
   }
   return $form;
 }
+
+/**
+- * Implements hook_field_collection_item_view().
+- */
+function gsb_feature_featured_content_fpp_field_collection_item_view($field_collection_item, $view_mode, $langcode) {
+ if(isset($field_collection_item->field_feature_type)){
+    if ($field_collection_item->field_feature_type[LANGUAGE_NONE][0]['value'] == 'other') {
+     $field_collection_item->content['field_title'][0]['#markup'] = '<a href='.$field_collection_item->field_link_single[LANGUAGE_NONE][0]['url'].'>'.$field_collection_item->content['field_title'][0]['#markup'].'</a>';
+    }
+  }
+}

@@ -9,6 +9,7 @@
           $('input[name="field_featured_item[und]['+key+'][field_icon][und]"]').removeAttr('checked');
         }
         else {
+          $('#edit-field-featured-item-und-'+key+'-field-icon-und-written').attr('checked', 'checked');
           $('#edit-field-featured-item-und-'+key+'-field-featured-content-fpp-ref-und-0-target-id').val('');
         }
       });

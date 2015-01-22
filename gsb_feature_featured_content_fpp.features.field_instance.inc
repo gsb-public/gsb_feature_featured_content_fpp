@@ -206,7 +206,11 @@ function gsb_feature_featured_content_fpp_field_default_field_instances() {
     'bundle' => 'field_featured_item',
     'custom_add_another' => '',
     'custom_remove' => '',
-    'default_value' => NULL,
+    'default_value' => array(
+      0 => array(
+        'value' => 'written',
+      ),
+    ),
     'deleted' => 0,
     'description' => '',
     'display' => array(

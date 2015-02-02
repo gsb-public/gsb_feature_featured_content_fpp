@@ -364,7 +364,7 @@ function gsb_feature_featured_content_fpp_field_default_field_instances() {
     'entity_type' => 'field_collection_item',
     'field_name' => 'field_link_single',
     'label' => 'Link to content',
-    'required' => 1,
+    'required' => 0,    
     'settings' => array(
       'attributes' => array(
         'class' => '',

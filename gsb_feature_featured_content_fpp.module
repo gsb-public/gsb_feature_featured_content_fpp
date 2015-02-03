@@ -35,12 +35,20 @@ function gsb_feature_featured_content_fpp_form_validate($form, &$form_state) {
       if ($values['field_featured_item'][$language][$key]['field_feature_type'][$language][0]['value'] == 'other') {
         if (empty($values['field_featured_item'][$language][$key]['field_icon'][$language][0]['value'])) {
           $field_label = $form['field_featured_item'][$language][$key]['field_icon'][$language]['#title'];
-          form_set_error('field_icon]['.$language.']['.$key.'][tid', $field_label . ' field is required.');
+          form_set_error('field_icon]['.$language.']['.$key.'][tid' . $field_label . ' field is required.');
         }
         if (empty($values['field_featured_item'][$language][$key]['field_link_single'][$language][0]['url'])) {
           $field_label = $form['field_featured_item'][$language][$key]['field_link_single'][$language]['#title'];
-          form_set_error('field_link_single]['.$language.']['.$key.'][tid', $field_label . ' field is required.');
+          form_set_error('field_featured_item]['.$language.']['.$key.'][field_link_single]['.$language.']['.$key.'][url', $field_label . ' field is required.');
         }
+        if (empty($values['field_featured_item'][$language][$key]['field_title'][$language][0]['value'])) {
+          $field_label = $form['field_featured_item'][$language][$key]['field_title'][$language]['#title'];
+          form_set_error('field_featured_item]['.$language.']['.$key.'][field_title]['.$language.']['.$key.'][value', $field_label . ' field is required.');
+        }
+      }
+      if ($values['field_featured_item'][$language][$key]['field_feature_type'][$language][0]['value'] == 'nid') {
+        $field_label = $form['field_featured_item'][$language][$key]['field_featured_content_fpp_ref'][$language]['#title'];
+        form_set_error('field_featured_item]['.$language.']['.$key.'][field_featured_content_fpp_ref]['.$language.']['.$key.'][target_id', $field_label . ' field is required.');
       }
     }
   }
@@ -64,25 +72,27 @@ function gsb_feature_featured_content_fpp_after_build($form, &$form_state) {
 
       unset($form[LANGUAGE_NONE][$key]['field_icon'][LANGUAGE_NONE]['#options']['_none']);
       unset($form[LANGUAGE_NONE][$key]['field_icon'][LANGUAGE_NONE]['_none']);
-      $form[LANGUAGE_NONE][$key]['field_featured_content_fpp_ref']['#states'] = array(
-        'visible' => array(
-          ':input[name="field_featured_item[und]['.$key.'][field_feature_type][und]"]' => array('value' => 'nid'),
-        ),
-      );
 
       // Change #id to apply #states.
-      $form[LANGUAGE_NONE][$key]['field_link_single']['#id'] = 'views-exposed-pane-other-link'.$key;
-      $form[LANGUAGE_NONE][$key]['field_link_single']['#states'] = array(
-        'visible' => array(
-          ':input[name="field_featured_item[und]['.$key.'][field_feature_type][und]"]' => array('value' => 'other'),
-        ),
-      );
-      $form[LANGUAGE_NONE][$key]['field_link_single']['#states'] = array(
-        'required' => array(
-          ':input[name="field_featured_item[und]['.$key.'][field_feature_type][und]"]' => array('value' => 'other'),
-        ),
-      );      
 
+      //field_featured_content_fpp_ref
+      $form[LANGUAGE_NONE][$key]['field_featured_content_fpp_ref']['#states']['visible'] = array(
+        ':input[name="field_featured_item[und]['.$key.'][field_feature_type][und]"]' => array('value' => 'nid'),
+      );
+      $form[LANGUAGE_NONE][$key]['field_featured_content_fpp_ref']['#states']['required'] = array(
+        ':input[name="field_featured_item[und]['.$key.'][field_feature_type][und]"]' => array('value' => 'nid'),
+      );
+
+      // field_link_single
+      $form[LANGUAGE_NONE][$key]['field_link_single']['#id'] = 'views-exposed-pane-other-link'.$key;
+      $form[LANGUAGE_NONE][$key]['field_link_single']['#states']['visible'] = array(
+        ':input[name="field_featured_item[und]['.$key.'][field_feature_type][und]"]' => array('value' => 'other'),
+      );
+      $form[LANGUAGE_NONE][$key]['field_link_single']['#states']['required'] = array(
+        ':input[name="field_featured_item[und]['.$key.'][field_feature_type][und]"]' => array('value' => 'other'),
+      );
+
+      // field_icon
       $form[LANGUAGE_NONE][$key]['field_icon']['#id'] = 'views-exposed-pane-other-icon'.$key;
       $form[LANGUAGE_NONE][$key]['field_icon']['#states'] = array(
         'visible' => array(
@@ -90,12 +100,15 @@ function gsb_feature_featured_content_fpp_after_build($form, &$form_state) {
         ),
       );
 
+      // field_title
       $form[LANGUAGE_NONE][$key]['field_title']['#id'] = 'views-exposed-pane-other-title'.$key;
-      $form[LANGUAGE_NONE][$key]['field_title']['#states'] = array(
-        'visible' => array(
-          ':input[name="field_featured_item[und]['.$key.'][field_feature_type][und]"]' => array('value' => 'other'),
-        ),
+      $form[LANGUAGE_NONE][$key]['field_title']['#states']['visible'] = array(
+        ':input[name="field_featured_item[und]['.$key.'][field_feature_type][und]"]' => array('value' => 'other'),
       );
+      $form[LANGUAGE_NONE][$key]['field_title']['#states']['required'] = array(
+        ':input[name="field_featured_item[und]['.$key.'][field_feature_type][und]"]' => array('value' => 'other'),
+      );
+
     }
   }
 

@@ -35,7 +35,7 @@ function gsb_feature_featured_content_fpp_form_validate($form, &$form_state) {
       if ($values['field_featured_item'][$language][$key]['field_feature_type'][$language][0]['value'] == 'other') {
         if (empty($values['field_featured_item'][$language][$key]['field_icon'][$language][0]['value'])) {
           $field_label = $form['field_featured_item'][$language][$key]['field_icon'][$language]['#title'];
-          form_set_error('field_icon]['.$language.']['.$key.'][tid' . $field_label . ' field is required.');
+          form_set_error('field_icon]['.$language.']['.$key.'][tid', $field_label . ' field is required.');
         }
         if (empty($values['field_featured_item'][$language][$key]['field_link_single'][$language][0]['url'])) {
           $field_label = $form['field_featured_item'][$language][$key]['field_link_single'][$language]['#title'];

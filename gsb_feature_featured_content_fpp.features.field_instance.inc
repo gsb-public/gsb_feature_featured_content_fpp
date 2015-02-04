@@ -26,7 +26,7 @@ function gsb_feature_featured_content_fpp_field_default_field_instances() {
           'conditions' => array(),
         ),
         'type' => 'text_default',
-        'weight' => 5,
+        'weight' => 4,
       ),
       'full' => array(
         'label' => 'hidden',
@@ -269,7 +269,7 @@ function gsb_feature_featured_content_fpp_field_default_field_instances() {
           'image_style' => '270x158',
         ),
         'type' => 'image',
-        'weight' => 6,
+        'weight' => 5,
       ),
       'full' => array(
         'label' => 'hidden',
@@ -350,8 +350,8 @@ function gsb_feature_featured_content_fpp_field_default_field_instances() {
         'settings' => array(
           'conditions' => array(),
         ),
-        'type' => 'gsb_field_formatter_node_title_link',
-        'weight' => 4,
+        'type' => 'gsb_field_formatter_featured_content_featured_item_link',
+        'weight' => 3,
       ),
       'full' => array(
         'label' => 'hidden',
@@ -364,7 +364,7 @@ function gsb_feature_featured_content_fpp_field_default_field_instances() {
     'entity_type' => 'field_collection_item',
     'field_name' => 'field_link_single',
     'label' => 'Link to content',
-    'required' => 0,    
+    'required' => 0,
     'settings' => array(
       'attributes' => array(
         'class' => '',
@@ -511,12 +511,9 @@ function gsb_feature_featured_content_fpp_field_default_field_instances() {
     'display' => array(
       'default' => array(
         'label' => 'hidden',
-        'module' => 'text',
-        'settings' => array(
-          'conditions' => array(),
-        ),
-        'type' => 'text_default',
-        'weight' => 3,
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 6,
       ),
       'full' => array(
         'label' => 'hidden',

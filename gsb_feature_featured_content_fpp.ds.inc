@@ -41,6 +41,19 @@ function gsb_feature_featured_content_fpp_ds_field_settings_info() {
         ),
       ),
     ),
+    'field_featured_content_fpp_ref' => array(
+      'formatter_settings' => array(
+        'ft' => array(
+          'func' => 'theme_ds_field_expert',
+          'ow' => TRUE,
+          'ow-el' => 'div',
+          'ow-cl' => '',
+          'ow-def-cl' => TRUE,
+          'ow-at' => '',
+          'ow-def-at' => FALSE,
+        ),
+      ),
+    ),
     'field_image_single_public' => array(
       'formatter_settings' => array(
         'ft' => array(
@@ -68,38 +81,6 @@ function gsb_feature_featured_content_fpp_ds_field_settings_info() {
       ),
     ),
     'field_related_other_label' => array(
-      'formatter_settings' => array(
-        'ft' => array(
-          'func' => 'theme_ds_field_expert',
-          'ow' => TRUE,
-          'ow-el' => 'div',
-          'ow-cl' => '',
-          'ow-def-cl' => TRUE,
-          'ow-at' => '',
-          'ow-def-at' => FALSE,
-        ),
-      ),
-    ),
-    'field_title' => array(
-      'formatter_settings' => array(
-        'ft' => array(
-          'func' => 'theme_ds_field_expert',
-          'ow' => TRUE,
-          'ow-el' => 'div',
-          'ow-cl' => '',
-          'ow-def-cl' => TRUE,
-          'ow-at' => '',
-          'ow-def-at' => FALSE,
-          'fi' => TRUE,
-          'fi-el' => 'h2',
-          'fi-cl' => '',
-          'fi-at' => '',
-          'fi-def-at' => FALSE,
-          'fi-odd-even' => FALSE,
-        ),
-      ),
-    ),
-    'field_featured_content_fpp_ref' => array(
       'formatter_settings' => array(
         'ft' => array(
           'func' => 'theme_ds_field_expert',
@@ -188,19 +169,17 @@ function gsb_feature_featured_content_fpp_ds_layout_settings_info() {
       'left' => array(
         1 => 'media_icon',
         2 => 'field_featured_content_fpp_ref',
-        3 => 'field_title',
-        4 => 'field_link_single',
-        5 => 'field_editorial_summary',
+        3 => 'field_link_single',
+        4 => 'field_editorial_summary',
       ),
       'right' => array(
-        6 => 'field_image_single_public',
+        5 => 'field_image_single_public',
       ),
     ),
     'fields' => array(
       'field_related_other_label' => 'header',
       'media_icon' => 'left',
       'field_featured_content_fpp_ref' => 'left',
-      'field_title' => 'left',
       'field_link_single' => 'left',
       'field_editorial_summary' => 'left',
       'field_image_single_public' => 'right',

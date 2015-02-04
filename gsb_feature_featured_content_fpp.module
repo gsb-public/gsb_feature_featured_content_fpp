@@ -61,54 +61,55 @@ function gsb_feature_featured_content_fpp_form_validate($form, &$form_state) {
  * gsb_feature_featured_content_fpp_after_build().
  */
 function gsb_feature_featured_content_fpp_after_build($form, &$form_state) {
-  foreach ($form[LANGUAGE_NONE] as $key => $value) {
+  $language = $form['#language'];
+  foreach ($form[$language] as $key => $value) {
     if (is_numeric($key) && $key >= 0) {
 
       // Add required field markers. The actual field validation is done in validate callback.
-      if (!empty($form[LANGUAGE_NONE][$key]['field_icon'][LANGUAGE_NONE])) {
-        $form[LANGUAGE_NONE][$key]['field_icon'][LANGUAGE_NONE]['#title'] .= " " . theme('form_required_marker');
+      if (!empty($form[$language][$key]['field_icon'][$language])) {
+        $form[$language][$key]['field_icon'][$language]['#title'] .= " " . theme('form_required_marker');
       }
 
       // Remove N/A option from feature type and media format radio button
-      unset($form[LANGUAGE_NONE][$key]['field_feature_type'][LANGUAGE_NONE]['#options']['_none']);
-      unset($form[LANGUAGE_NONE][$key]['field_feature_type'][LANGUAGE_NONE]['_none']);
+      unset($form[$language][$key]['field_feature_type'][$language]['#options']['_none']);
+      unset($form[$language][$key]['field_feature_type'][$language]['_none']);
 
-      unset($form[LANGUAGE_NONE][$key]['field_icon'][LANGUAGE_NONE]['#options']['_none']);
-      unset($form[LANGUAGE_NONE][$key]['field_icon'][LANGUAGE_NONE]['_none']);
+      unset($form[$language][$key]['field_icon'][$language]['#options']['_none']);
+      unset($form[$language][$key]['field_icon'][$language]['_none']);
 
       // Change #id to apply #states.
 
       //field_featured_content_fpp_ref
-      $form[LANGUAGE_NONE][$key]['field_featured_content_fpp_ref']['#states']['visible'] = array(
+      $form[$language][$key]['field_featured_content_fpp_ref']['#states']['visible'] = array(
         ':input[name="field_featured_item[und]['.$key.'][field_feature_type][und]"]' => array('value' => 'nid'),
       );
-      $form[LANGUAGE_NONE][$key]['field_featured_content_fpp_ref']['#states']['required'] = array(
+      $form[$language][$key]['field_featured_content_fpp_ref']['#states']['required'] = array(
         ':input[name="field_featured_item[und]['.$key.'][field_feature_type][und]"]' => array('value' => 'nid'),
       );
 
       // field_link_single
-      $form[LANGUAGE_NONE][$key]['field_link_single']['#id'] = 'views-exposed-pane-other-link'.$key;
-      $form[LANGUAGE_NONE][$key]['field_link_single']['#states']['visible'] = array(
+      $form[$language][$key]['field_link_single']['#id'] = 'views-exposed-pane-other-link'.$key;
+      $form[$language][$key]['field_link_single']['#states']['visible'] = array(
         ':input[name="field_featured_item[und]['.$key.'][field_feature_type][und]"]' => array('value' => 'other'),
       );
-      $form[LANGUAGE_NONE][$key]['field_link_single']['#states']['required'] = array(
+      $form[$language][$key]['field_link_single']['#states']['required'] = array(
         ':input[name="field_featured_item[und]['.$key.'][field_feature_type][und]"]' => array('value' => 'other'),
       );
 
       // field_icon
-      $form[LANGUAGE_NONE][$key]['field_icon']['#id'] = 'views-exposed-pane-other-icon'.$key;
-      $form[LANGUAGE_NONE][$key]['field_icon']['#states'] = array(
+      $form[$language][$key]['field_icon']['#id'] = 'views-exposed-pane-other-icon'.$key;
+      $form[$language][$key]['field_icon']['#states'] = array(
         'visible' => array(
           ':input[name="field_featured_item[und]['.$key.'][field_feature_type][und]"]' => array('value' => 'other'),
         ),
       );
 
       // field_title
-      $form[LANGUAGE_NONE][$key]['field_title']['#id'] = 'views-exposed-pane-other-title'.$key;
-      $form[LANGUAGE_NONE][$key]['field_title']['#states']['visible'] = array(
+      $form[$language][$key]['field_title']['#id'] = 'views-exposed-pane-other-title'.$key;
+      $form[$language][$key]['field_title']['#states']['visible'] = array(
         ':input[name="field_featured_item[und]['.$key.'][field_feature_type][und]"]' => array('value' => 'other'),
       );
-      $form[LANGUAGE_NONE][$key]['field_title']['#states']['required'] = array(
+      $form[$language][$key]['field_title']['#states']['required'] = array(
         ':input[name="field_featured_item[und]['.$key.'][field_feature_type][und]"]' => array('value' => 'other'),
       );
 

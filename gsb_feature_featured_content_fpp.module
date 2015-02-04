@@ -81,36 +81,36 @@ function gsb_feature_featured_content_fpp_after_build($form, &$form_state) {
 
       //field_featured_content_fpp_ref
       $form[$language][$key]['field_featured_content_fpp_ref']['#states']['visible'] = array(
-        ':input[name="field_featured_item[und]['.$key.'][field_feature_type][und]"]' => array('value' => 'nid'),
+        ':input[name="field_featured_item['.$language.']['.$key.'][field_feature_type]['.$language.']"]' => array('value' => 'nid'),
       );
       $form[$language][$key]['field_featured_content_fpp_ref']['#states']['required'] = array(
-        ':input[name="field_featured_item[und]['.$key.'][field_feature_type][und]"]' => array('value' => 'nid'),
+        ':input[name="field_featured_item['.$language.']['.$key.'][field_feature_type]['.$language.']"]' => array('value' => 'nid'),
       );
 
       // field_link_single
       $form[$language][$key]['field_link_single']['#id'] = 'views-exposed-pane-other-link'.$key;
       $form[$language][$key]['field_link_single']['#states']['visible'] = array(
-        ':input[name="field_featured_item[und]['.$key.'][field_feature_type][und]"]' => array('value' => 'other'),
+        ':input[name="field_featured_item['.$language.']['.$key.'][field_feature_type]['.$language.']"]' => array('value' => 'other'),
       );
       $form[$language][$key]['field_link_single']['#states']['required'] = array(
-        ':input[name="field_featured_item[und]['.$key.'][field_feature_type][und]"]' => array('value' => 'other'),
+        ':input[name="field_featured_item['.$language.']['.$key.'][field_feature_type]['.$language.']"]' => array('value' => 'other'),
       );
 
       // field_icon
       $form[$language][$key]['field_icon']['#id'] = 'views-exposed-pane-other-icon'.$key;
       $form[$language][$key]['field_icon']['#states'] = array(
         'visible' => array(
-          ':input[name="field_featured_item[und]['.$key.'][field_feature_type][und]"]' => array('value' => 'other'),
+          ':input[name="field_featured_item['.$language.']['.$key.'][field_feature_type]['.$language.']"]' => array('value' => 'other'),
         ),
       );
 
       // field_title
       $form[$language][$key]['field_title']['#id'] = 'views-exposed-pane-other-title'.$key;
       $form[$language][$key]['field_title']['#states']['visible'] = array(
-        ':input[name="field_featured_item[und]['.$key.'][field_feature_type][und]"]' => array('value' => 'other'),
+        ':input[name="field_featured_item['.$language.']['.$key.'][field_feature_type]['.$language.']"]' => array('value' => 'other'),
       );
       $form[$language][$key]['field_title']['#states']['required'] = array(
-        ':input[name="field_featured_item[und]['.$key.'][field_feature_type][und]"]' => array('value' => 'other'),
+        ':input[name="field_featured_item['.$language.']['.$key.'][field_feature_type]['.$language.']"]' => array('value' => 'other'),
       );
 
     }

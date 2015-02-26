@@ -371,7 +371,7 @@ function gsb_feature_featured_content_fpp_field_default_field_instances() {
         'configurable_class' => 0,
         'configurable_title' => 0,
         'rel' => '',
-        'target' => 'default',
+        'target' => 'user',
         'title' => '',
       ),
       'custom_add_another' => '',

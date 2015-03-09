@@ -258,7 +258,7 @@ function gsb_feature_featured_content_fpp_field_default_field_instances() {
     'custom_add_another' => '',
     'custom_remove' => '',
     'deleted' => 0,
-    'description' => '',
+    'description' => '300 x 176 px',
     'display' => array(
       'default' => array(
         'label' => 'hidden',
@@ -325,7 +325,6 @@ function gsb_feature_featured_content_fpp_field_default_field_instances() {
       'active' => 1,
       'module' => 'image',
       'settings' => array(
-        'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
         'preview_image_style' => 'thumbnail',
         'progress_indicator' => 'throbber',
       ),
@@ -366,6 +365,7 @@ function gsb_feature_featured_content_fpp_field_default_field_instances() {
     'label' => 'Link to content',
     'required' => 0,
     'settings' => array(
+      'absolute_url' => 1,
       'attributes' => array(
         'class' => '',
         'configurable_class' => 0,
@@ -722,6 +722,7 @@ function gsb_feature_featured_content_fpp_field_default_field_instances() {
 
   // Translatables
   // Included for use with string extractors like potx.
+  t('300 x 176 px');
   t('Description');
   t('Existing Node Title');
   t('Featured Item');

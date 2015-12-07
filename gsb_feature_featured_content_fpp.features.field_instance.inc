@@ -10,7 +10,8 @@
 function gsb_feature_featured_content_fpp_field_default_field_instances() {
   $field_instances = array();
 
-  // Exported field_instance: 'field_collection_item-field_featured_item-field_editorial_summary'
+  // Exported field_instance:
+  // 'field_collection_item-field_featured_item-field_editorial_summary'.
   $field_instances['field_collection_item-field_featured_item-field_editorial_summary'] = array(
     'bundle' => 'field_featured_item',
     'custom_add_another' => '',
@@ -107,7 +108,8 @@ function gsb_feature_featured_content_fpp_field_default_field_instances() {
     'workbench_access_field' => 0,
   );
 
-  // Exported field_instance: 'field_collection_item-field_featured_item-field_feature_type'
+  // Exported field_instance:
+  // 'field_collection_item-field_featured_item-field_feature_type'.
   $field_instances['field_collection_item-field_featured_item-field_feature_type'] = array(
     'bundle' => 'field_featured_item',
     'custom_add_another' => '',
@@ -147,6 +149,7 @@ function gsb_feature_featured_content_fpp_field_default_field_instances() {
       'active' => 1,
       'module' => 'options',
       'settings' => array(
+        'checkall' => FALSE,
         'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
       ),
       'type' => 'options_buttons',
@@ -155,7 +158,8 @@ function gsb_feature_featured_content_fpp_field_default_field_instances() {
     'workbench_access_field' => 0,
   );
 
-  // Exported field_instance: 'field_collection_item-field_featured_item-field_featured_content_fpp_ref'
+  // Exported field_instance:
+  // 'field_collection_item-field_featured_item-field_featured_content_fpp_ref'.
   $field_instances['field_collection_item-field_featured_item-field_featured_content_fpp_ref'] = array(
     'bundle' => 'field_featured_item',
     'custom_add_another' => '',
@@ -166,7 +170,7 @@ function gsb_feature_featured_content_fpp_field_default_field_instances() {
     'display' => array(
       'default' => array(
         'label' => 'hidden',
-        'module' => 'entityreference',
+        'module' => 'gsb_feature_existing_node_list_fpp',
         'settings' => array(
           'conditions' => array(),
           'links' => 0,
@@ -201,7 +205,8 @@ function gsb_feature_featured_content_fpp_field_default_field_instances() {
     'workbench_access_field' => 0,
   );
 
-  // Exported field_instance: 'field_collection_item-field_featured_item-field_icon'
+  // Exported field_instance:
+  // 'field_collection_item-field_featured_item-field_icon'.
   $field_instances['field_collection_item-field_featured_item-field_icon'] = array(
     'bundle' => 'field_featured_item',
     'custom_add_another' => '',
@@ -244,6 +249,7 @@ function gsb_feature_featured_content_fpp_field_default_field_instances() {
       'active' => 1,
       'module' => 'options',
       'settings' => array(
+        'checkall' => FALSE,
         'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
       ),
       'type' => 'options_buttons',
@@ -252,7 +258,8 @@ function gsb_feature_featured_content_fpp_field_default_field_instances() {
     'workbench_access_field' => 0,
   );
 
-  // Exported field_instance: 'field_collection_item-field_featured_item-field_image_single_public'
+  // Exported field_instance:
+  // 'field_collection_item-field_featured_item-field_image_single_public'.
   $field_instances['field_collection_item-field_featured_item-field_image_single_public'] = array(
     'bundle' => 'field_featured_item',
     'custom_add_another' => '',
@@ -262,13 +269,11 @@ function gsb_feature_featured_content_fpp_field_default_field_instances() {
     'display' => array(
       'default' => array(
         'label' => 'hidden',
-        'module' => 'image',
+        'module' => 'gsb_feature_featured_content_fpp',
         'settings' => array(
           'conditions' => array(),
-          'image_link' => '',
-          'image_style' => '270x158',
         ),
-        'type' => 'image',
+        'type' => 'gsb_field_formatter_image_link',
         'weight' => 5,
       ),
       'full' => array(
@@ -334,7 +339,8 @@ function gsb_feature_featured_content_fpp_field_default_field_instances() {
     'workbench_access_field' => 0,
   );
 
-  // Exported field_instance: 'field_collection_item-field_featured_item-field_link_single'
+  // Exported field_instance:
+  // 'field_collection_item-field_featured_item-field_link_single'.
   $field_instances['field_collection_item-field_featured_item-field_link_single'] = array(
     'bundle' => 'field_featured_item',
     'custom_add_another' => '',
@@ -405,7 +411,8 @@ function gsb_feature_featured_content_fpp_field_default_field_instances() {
     'workbench_access_field' => 0,
   );
 
-  // Exported field_instance: 'field_collection_item-field_featured_item-field_related_other_label'
+  // Exported field_instance:
+  // 'field_collection_item-field_featured_item-field_related_other_label'.
   $field_instances['field_collection_item-field_featured_item-field_related_other_label'] = array(
     'bundle' => 'field_featured_item',
     'custom_add_another' => '',
@@ -500,7 +507,8 @@ function gsb_feature_featured_content_fpp_field_default_field_instances() {
     'workbench_access_field' => 0,
   );
 
-  // Exported field_instance: 'field_collection_item-field_featured_item-field_title'
+  // Exported field_instance:
+  // 'field_collection_item-field_featured_item-field_title'.
   $field_instances['field_collection_item-field_featured_item-field_title'] = array(
     'bundle' => 'field_featured_item',
     'custom_add_another' => '',
@@ -592,7 +600,8 @@ function gsb_feature_featured_content_fpp_field_default_field_instances() {
     'workbench_access_field' => 0,
   );
 
-  // Exported field_instance: 'fieldable_panels_pane-featured_content-field_featured_item'
+  // Exported field_instance:
+  // 'fieldable_panels_pane-featured_content-field_featured_item'.
   $field_instances['fieldable_panels_pane-featured_content-field_featured_item'] = array(
     'bundle' => 'featured_content',
     'custom_add_another' => '',
@@ -634,7 +643,8 @@ function gsb_feature_featured_content_fpp_field_default_field_instances() {
     'workbench_access_field' => 0,
   );
 
-  // Exported field_instance: 'fieldable_panels_pane-featured_content-field_title'
+  // Exported field_instance:
+  // 'fieldable_panels_pane-featured_content-field_title'.
   $field_instances['fieldable_panels_pane-featured_content-field_title'] = array(
     'bundle' => 'featured_content',
     'custom_add_another' => '',

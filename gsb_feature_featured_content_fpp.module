@@ -118,3 +118,33 @@ function gsb_feature_featured_content_fpp_after_build($form, &$form_state) {
 
   return $form;
 }
+
+/**
+ * Implements hook_field_formatter_info().
+ */
+function gsb_feature_featured_content_fpp_field_formatter_info() {
+  return array(
+    'gsb_field_formatter_image_link' => array(
+      'label' => t('Featured content image link'),
+      'description' => t('Featured content image link.'),
+      'field types' => array('image'),
+    ),
+  );
+}
+
+function gsb_feature_featured_content_fpp_field_formatter_view($entity_type, $entity, $field, $instance, $langcode, $items, $display) {
+  $element = array();
+  if ($display['type'] == 'gsb_field_formatter_image_link') {
+    foreach ($items as $delta => $item) {
+      $element[$delta] = array(
+        '#theme' => 'image_formatter',
+        '#item' => $item,
+        '#image_style' => $display['settings']['image_style'],
+        '#prefix' => '<a href="'.$entity->field_link_single['und'][0]['url'].'">',
+        '#suffix' => '</a>'
+      );
+    }
+    }
+
+  return $element;
+}

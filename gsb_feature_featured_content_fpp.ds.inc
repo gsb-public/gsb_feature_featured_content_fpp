@@ -196,6 +196,7 @@ function gsb_feature_featured_content_fpp_ds_layout_settings_info() {
     'layout_attributes_merge' => 1,
     'layout_link_attribute' => '',
     'layout_link_custom' => '',
+    'layout_disable_css' => 0,
   );
   $export['field_collection_item|field_featured_item|default'] = $ds_layout;
 

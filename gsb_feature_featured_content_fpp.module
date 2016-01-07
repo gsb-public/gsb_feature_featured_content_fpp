@@ -139,8 +139,8 @@ function gsb_feature_featured_content_fpp_field_formatter_view($entity_type, $en
       $element[$delta] = array(
         '#theme' => 'image_formatter',
         '#item' => $item,
-        '#image_style' => $display['settings']['image_style'],
-        '#prefix' => '<a href="'.$entity->field_link_single['und'][0]['url'].'">',
+        '#image_style' => isset($display['settings']['image_style']) ? $display['settings']['image_style'] : '',
+        '#prefix' => isset($entity->field_link_single['und']) ? '<a href="'.$entity->field_link_single['und'][0]['url'].'">' : '',
         '#suffix' => '</a>'
       );
     }

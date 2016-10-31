@@ -43,3 +43,10 @@ features[field_instance][] = fieldable_panels_pane-featured_content-field_title
 features[fieldable_panels_pane_type][] = featured_content
 features[variable][] = field_bundle_settings_fieldable_panels_pane__featured_content
 features_exclude[field_base][field_featured_item] = field_featured_item
+
+
+; Information added by drush on 2016-10-26
+version = "5.05"
+project = "gsb_feature_featured_content_fpp"
+datestamp = "1477491516"
+

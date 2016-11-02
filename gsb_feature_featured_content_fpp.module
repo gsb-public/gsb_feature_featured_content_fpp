@@ -155,14 +155,12 @@ function gsb_feature_featured_content_fpp_fieldable_panels_pane_view($entity, $v
   }
 
   foreach ($entity->content['field_featured_item']['#items'] as $index => $item_id) {
-
     // if image exists
     $item = $entity->content['field_featured_item'][$index]['entity']['field_collection_item'][$item_id['value']];
     $image = $item['field_image_single_public'];
+    $prefix = '';
+    $url = '';
     if ($image) {
-      $prefix = '';
-      $url = '';
-
       if ($image['#object']->field_feature_type['und'][0]['value'] == 'other'){
         // check if open in new window
         $link_option = $item['field_link_single'][0]['#options']['attributes']['target'];
@@ -173,17 +171,17 @@ function gsb_feature_featured_content_fpp_fieldable_panels_pane_view($entity, $v
           $prefix = '<a href= "'. $url . '" target=_blank >';
         } else {
           $prefix = '<a href= "'. $url . '" >';
-
         }
-        $image['#prefix'] =  $prefix;
-        $image['suffix'] = '</a>';
+
 
       } else {
         //use node reference
         $url= drupal_get_path_alias('node/' . $image['#object']->field_featured_content_fpp_ref['und'][0]['target_id']);
         $prefix = '<a href= "/'. $url . '" >';
-        $image[0]['#prefix']=  $prefix;
       }
+
     }
+    $entity->content['field_featured_item'][$index]['entity']['field_collection_item'][$item_id['value']]['field_image_single_public'][0]['#prefix'] = $prefix;
   }
 }
+

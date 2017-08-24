@@ -282,7 +282,7 @@ function gsb_feature_featured_content_fpp_field_default_field_instances() {
         'settings' => array(
           'conditions' => array(),
           'image_link' => '',
-          'image_style' => '',
+          'image_style' => 'compress',
         ),
         'type' => 'image',
         'weight' => 5,

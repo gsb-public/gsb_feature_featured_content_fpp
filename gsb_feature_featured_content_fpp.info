@@ -1,7 +1,7 @@
 name = GSB Feature Featured Content FPP
 core = 7.x
 package = GSB
-version = 7.x-5.0
+version = 7.x-6.44
 project = gsb_feature_featured_content_fpp
 dependencies[] = ctools
 dependencies[] = ds
@@ -20,7 +20,7 @@ dependencies[] = list
 dependencies[] = options
 dependencies[] = strongarm
 dependencies[] = text
-datestamp = 1421174496
+datestamp = 1477491516
 features[ctools][] = ds:ds:1
 features[ctools][] = fieldable_panels_panes:fieldable_panels_pane_type:1
 features[ctools][] = strongarm:strongarm:1
@@ -43,10 +43,3 @@ features[field_instance][] = fieldable_panels_pane-featured_content-field_title
 features[fieldable_panels_pane_type][] = featured_content
 features[variable][] = field_bundle_settings_fieldable_panels_pane__featured_content
 features_exclude[field_base][field_featured_item] = field_featured_item
-
-
-; Information added by drush on 2016-10-26
-version = "5.05"
-project = "gsb_feature_featured_content_fpp"
-datestamp = "1477491516"
-

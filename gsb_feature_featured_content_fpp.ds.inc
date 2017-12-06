@@ -126,6 +126,7 @@ function gsb_feature_featured_content_fpp_ds_field_settings_info() {
           'fi-at' => '',
           'fi-def-at' => FALSE,
           'fi-odd-even' => FALSE,
+          'fi-first-last' => FALSE,
         ),
       ),
     ),
@@ -134,7 +135,7 @@ function gsb_feature_featured_content_fpp_ds_field_settings_info() {
         'ft' => array(
           'func' => 'theme_ds_field_expert',
           'ow' => TRUE,
-          'ow-el' => 'h1',
+          'ow-el' => 'span',
           'ow-cl' => '',
           'ow-def-cl' => TRUE,
           'ow-at' => '',
@@ -227,6 +228,7 @@ function gsb_feature_featured_content_fpp_ds_layout_settings_info() {
     'layout_attributes_merge' => 1,
     'layout_link_attribute' => '',
     'layout_link_custom' => '',
+    'layout_disable_css' => FALSE,
   );
   $export['fieldable_panels_pane|featured_content|default'] = $ds_layout;
 

@@ -174,6 +174,7 @@ function gsb_feature_featured_content_fpp_field_default_field_instances() {
         'settings' => array(
           'conditions' => array(),
           'links' => 0,
+          'use_content_language' => TRUE,
           'view_mode' => 'alumni_featured_content',
         ),
         'type' => 'entityreference_entity_view',

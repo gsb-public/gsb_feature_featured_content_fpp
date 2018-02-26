@@ -157,10 +157,10 @@ function gsb_feature_featured_content_fpp_fieldable_panels_pane_view($entity, $v
   foreach ($entity->content['field_featured_item']['#items'] as $index => $item_id) {
     // if image exists
     $item = $entity->content['field_featured_item'][$index]['entity']['field_collection_item'][$item_id['value']];
-    $image = $item['field_image_single_public'];
     $prefix = '';
     $url = '';
-    if ($image) {
+    if (isset($item['field_image_single_public'])) {
+      $image = $item['field_image_single_public'];
       if ($image['#object']->field_feature_type['und'][0]['value'] == 'other'){
         // check if open in new window
         $link_option = $item['field_link_single'][0]['#options']['attributes']['target'];

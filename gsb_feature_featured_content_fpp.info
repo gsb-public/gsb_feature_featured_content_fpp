@@ -12,7 +12,6 @@ dependencies[] = fieldable_panels_panes
 dependencies[] = filefield_paths
 dependencies[] = gsb_feature_base_fields
 dependencies[] = gsb_feature_existing_node_list_fpp
-dependencies[] = gsb_feature_featured_content_fpp
 dependencies[] = gsb_field_formatter
 dependencies[] = image
 dependencies[] = link

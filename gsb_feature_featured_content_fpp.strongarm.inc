@@ -37,15 +37,6 @@ function gsb_feature_featured_content_fpp_strongarm() {
       'alumni_featured_content' => array(
         'custom_settings' => FALSE,
       ),
-      'preview' => array(
-        'custom_settings' => FALSE,
-      ),
-      'compact' => array(
-        'custom_settings' => FALSE,
-      ),
-      'expanded' => array(
-        'custom_settings' => FALSE,
-      ),
     ),
     'extra_fields' => array(
       'form' => array(),

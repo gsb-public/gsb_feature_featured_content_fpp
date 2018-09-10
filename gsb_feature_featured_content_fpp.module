@@ -163,7 +163,10 @@ function gsb_feature_featured_content_fpp_fieldable_panels_pane_view($entity, $v
       $image = $item['field_image_single_public'];
       if ($image['#object']->field_feature_type['und'][0]['value'] == 'other'){
         // check if open in new window
-        $link_option = $item['field_link_single'][0]['#options']['attributes']['target'];
+        $link_option = '_blank';
+        if (!empty($item['field_link_single'][0]['#options']['attributes']['target'])) {
+          $link_option = $item['field_link_single'][0]['#options']['attributes']['target'];
+        }
         $url= $item['field_link_single']['#items'][0]['url'];
 
         if ($link_option == '_blank') {
